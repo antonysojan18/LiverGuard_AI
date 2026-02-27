@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Appointment | LiverGuard AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        :root {
+            --bg-main: #ffe4e8;
+            --bg-dark: #5c001e;
+            --card-bg: rgba(60, 15, 25, 0.95);
+            --border-glass: rgba(255, 182, 193, 0.3);
+            --accent: #d03b5b;
+            --accent-dim: rgba(208, 59, 91, 0.5);
+            --text-white: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.85);
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #4a0c1a;
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(92, 0, 30, 0.9) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .navbar h5,
+        .navbar span {
+            color: var(--text-white) !important;
+        }
+
+        .btn-outline-secondary {
+            border-color: var(--border-glass);
+            color: var(--text-white);
+        }
+
+        .btn-outline-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .booking-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-glass);
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(92, 0, 30, 0.1);
+            color: var(--text-white);
+        }
+
+        .doctor-side {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 3.5rem;
+            border-right: 1px solid var(--border-glass);
+        }
+
+        .form-side {
+            padding: 3.5rem;
+        }
+
+        .doctor-avatar-large {
+            width: 140px;
+            height: 140px;
+            border-radius: 28px;
+            background: var(--bg-dark);
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(92, 0, 30, 0.15);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--accent);
+            animation: softFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes softFloat {
+            0% {
+                transform: translateY(0) scale(1);
+                box-shadow: 0 15px 30px rgba(92, 0, 30, 0.15);
+            }
+
+            50% {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 25px 40px rgba(208, 59, 91, 0.25);
+            }
+
+            100% {
+                transform: translateY(0) scale(1);
+                box-shadow: 0 15px 30px rgba(92, 0, 30, 0.15);
+            }
+        }
+
+        .form-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .form-control,
+        .form-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            color: white !important;
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            transition: 0.3s;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color-scheme: dark;
+        }
+
+        .form-select option {
+            background: var(--bg-dark);
+            color: white;
+        }
+
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-dim);
+        }
+
+        .btn-pay {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-glass);
+            color: white;
+            padding: 1.25rem;
+            border-radius: 16px;
+            font-weight: 700;
+            width: 100%;
+            margin-top: 2rem;
+            box-shadow: 0 10px 20px rgba(92, 0, 30, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-pay:hover {
+            background: linear-gradient(135deg, var(--accent), #f9a8b6);
+            color: var(--bg-dark);
+            box-shadow: 0 15px 35px rgba(208, 59, 91, 0.4);
+            animation: pulseBtn 1.5s infinite;
+        }
+
+        @keyframes pulseBtn {
+            0% {
+                box-shadow: 0 0 0 0 rgba(208, 59, 91, 0.6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(208, 59, 91, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(208, 59, 91, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar sticky-top py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <div>
+                    <h5 class="m-0 fw-bold">Confirm Appointment</h5>
+                    <span class="small">Step 2 of 3: Scheduling</span>
+                </div>
+            </div>
+            <a href="/consult" class="btn btn-outline-secondary rounded-pill px-4 btn-sm">Change Doctor</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5 mb-5">
+        <div class="booking-card animate__animated animate__zoomIn">
+            <div class="row g-0">
+                <div class="col-lg-5 doctor-side text-center text-lg-start">
+                    <div class="doctor-avatar-large mx-auto mx-lg-0">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2">{{ doctor.Doctor_Name }}</h3>
+                    <p class="fw-bold mb-3" style="color: var(--accent);">{{ doctor.Specialization }}</p>
+                    <hr class="opacity-10 mb-4" style="border-color: var(--border-glass);">
+                    <p class="text-muted small mb-4">You are booking a clinical consultation for liver health
+                        assessment.</p>
+
+                    <div class="d-flex align-items-center mb-3 text-muted">
+                        <i class="fas fa-hospital me-2" style="color: var(--accent);"></i>
+                        <span class="small fw-medium">{{ doctor.Hospital_Name }}, {{ doctor.City }}</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-wallet text-muted me-2" style="color: var(--accent) !important;"></i>
+                        <span class="small fw-bold">Consultation Fee: ₹500</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 form-side">
+                    <h4 class="fw-bold mb-4">Appointment Details</h4>
+                    <form action="/payment" method="POST">
+                        <input type="hidden" name="doc_name" value="{{ doctor.Doctor_Name }}">
+                        <input type="hidden" name="hospital" value="{{ doctor.Hospital_Name }}">
+
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">Patient Name</label>
+                                <input type="text" name="patient_name" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Appointment Date</label>
+                                <input type="date" name="date" class="form-control"
+                                    value="{{ now.strftime('%Y-%m-%d') }}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Preferred Time</label>
+                                <select name="time" class="form-select">
+                                    <option>09:00 AM</option>
+                                    <option>10:30 AM</option>
+                                    <option selected>12:00 PM</option>
+                                    <option>03:30 PM</option>
+                                    <option>05:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 rounded-4"
+                            style="background: rgba(0,0,0,0.2); border: 1px dashed var(--border-glass);">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="m-0 small text-muted">A confirmation will be sent to your number.</p>
+                                </div>
+                                <div class="text-end">
+                                    <h5 class="m-0 fw-bold">Total: <span style="color: var(--accent);">₹500</span></h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-pay">
+                            Proceed to Secure Payment <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

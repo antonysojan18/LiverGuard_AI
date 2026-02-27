@@ -1,0 +1,101 @@
+Doctor_ID,Doctor_Name,Specialization,Hospital_Name,City,Risk_Handling_Level,Contact_Number,Experience_Years
+DOC_027,Dr. Deepa Kumar,Hepatologist / Gastroenterologist,"Narayana Health, Hubli",Hubli,Low Risk (Preventive),+91 790 555 4541,27
+DOC_051,Dr. Priya Reddy,Hepatologist / Gastroenterologist,"Appollo Health City, Kozhikode",Kozhikode,Medium Risk (Management),+91 992 555 7946,27
+DOC_084,Dr. Lakshmi Varma,Hepatologist / Gastroenterologist,"KIMS Health, Karimnagar",Karimnagar,High Risk (Surgical/Advanced),+91 789 555 1312,5
+DOC_071,Dr. Lakshmi Naidu,Hepatologist / Gastroenterologist,"MIOT International, Mangalore",Mangalore,High Risk (Surgical/Advanced),+91 944 555 7368,28
+DOC_016,Dr. Meera Varma,Hepatologist / Gastroenterologist,"KIMS Health, Nellore",Nellore,Low Risk (Preventive),+91 800 555 5845,23
+DOC_090,Dr. Sanjay Varma,Hepatologist / Gastroenterologist,"Fortis Hospital, Coimbatore",Coimbatore,High Risk (Surgical/Advanced),+91 992 555 2162,27
+DOC_045,Dr. Manoj Nair,Hepatologist / Gastroenterologist,"AIG Hospitals, Trivandrum",Trivandrum,Medium Risk (Management),+91 928 555 9819,14
+DOC_048,Dr. Karthik Krishna,Hepatologist / Gastroenterologist,"KIMS Health, Mangalore",Mangalore,Medium Risk (Management),+91 758 555 8287,9
+DOC_073,Dr. Vikram Naidu,Hepatologist / Gastroenterologist,"MIOT International, Trichy",Trichy,High Risk (Surgical/Advanced),+91 984 555 1051,10
+DOC_033,Dr. Meera Reddy,Hepatologist / Gastroenterologist,"Manipal Hospital, Visakhapatnam",Visakhapatnam,Medium Risk (Management),+91 918 555 4949,15
+DOC_094,Dr. Vikram Iyer,Hepatologist / Gastroenterologist,"AIG Hospitals, Hyderabad",Hyderabad,High Risk (Surgical/Advanced),+91 828 555 4647,14
+DOC_088,Dr. Rajesh Pillai,Hepatologist / Gastroenterologist,"MIOT International, Trivandrum",Trivandrum,High Risk (Surgical/Advanced),+91 729 555 3383,13
+DOC_013,Dr. Arjun Menon,Hepatologist / Gastroenterologist,"Manipal Hospital, Madurai",Madurai,Low Risk (Preventive),+91 942 555 8797,26
+DOC_005,Dr. Lakshmi Rao,Hepatologist / Gastroenterologist,"Appollo Health City, Hyderabad",Hyderabad,Low Risk (Preventive),+91 864 555 4849,26
+DOC_057,Dr. Rajesh Naidu,Hepatologist / Gastroenterologist,"Fortis Hospital, Vijayawada",Vijayawada,Medium Risk (Management),+91 899 555 1195,7
+DOC_083,Dr. Suresh Nair,Hepatologist / Gastroenterologist,"Amrita Hospital, Trichy",Trichy,High Risk (Surgical/Advanced),+91 781 555 3630,26
+DOC_074,Dr. Suresh Subramanian,Hepatologist / Gastroenterologist,"Manipal Hospital, Thrissur",Thrissur,High Risk (Surgical/Advanced),+91 911 555 7430,23
+DOC_049,Dr. Ananya Kumar,Hepatologist / Gastroenterologist,"Manipal Hospital, Coimbatore",Coimbatore,Medium Risk (Management),+91 956 555 8529,22
+DOC_068,Dr. Priya Reddy,Hepatologist / Gastroenterologist,"KIMS Health, Salem",Salem,Medium Risk (Management),+91 814 555 5839,29
+DOC_007,Dr. Deepa Nair,Hepatologist / Gastroenterologist,"Aster Medcity, Mysore",Mysore,Low Risk (Preventive),+91 840 555 1775,17
+DOC_031,Dr. Vikram Shetty,Hepatologist / Gastroenterologist,"KIMS Health, Guntur",Guntur,Medium Risk (Management),+91 819 555 9377,16
+DOC_093,Dr. Arjun Naidu,Hepatologist / Gastroenterologist,"Aster Medcity, Nizamabad",Nizamabad,High Risk (Surgical/Advanced),+91 736 555 7724,8
+DOC_070,Dr. Rajesh Naidu,Hepatologist / Gastroenterologist,"Appollo Health City, Visakhapatnam",Visakhapatnam,Medium Risk (Management),+91 784 555 9681,23
+DOC_062,Dr. Priya Iyer,Hepatologist / Gastroenterologist,"AIG Hospitals, Mangalore",Mangalore,Medium Risk (Management),+91 769 555 9158,15
+DOC_092,Dr. Lakshmi Rao,Hepatologist / Gastroenterologist,"Amrita Hospital, Kochi",Kochi,High Risk (Surgical/Advanced),+91 814 555 8716,27
+DOC_055,Dr. Vikram Nair,Hepatologist / Gastroenterologist,"MIOT International, Nizamabad",Nizamabad,Medium Risk (Management),+91 831 555 8590,15
+DOC_014,Dr. Ananya Verma,Hepatologist / Gastroenterologist,"Gleneagles Global Health City, Mysore",Mysore,Low Risk (Preventive),+91 851 555 7670,29
+DOC_026,Dr. Priya Menon,Hepatologist / Gastroenterologist,"AIG Hospitals, Hubli",Hubli,Low Risk (Preventive),+91 755 555 9916,18
+DOC_022,Dr. Ananya Menon,Hepatologist / Gastroenterologist,"MIOT International, Warangal",Warangal,Low Risk (Preventive),+91 992 555 1787,13
+DOC_025,Dr. Swathi Varma,Hepatologist / Gastroenterologist,"Amrita Hospital, Chennai",Chennai,Low Risk (Preventive),+91 765 555 5236,8
+DOC_058,Dr. Vikram Subramanian,Hepatologist / Gastroenterologist,"Narayana Health, Coimbatore",Coimbatore,Medium Risk (Management),+91 992 555 9127,28
+DOC_100,Dr. Suresh Shetty,Hepatologist / Gastroenterologist,"Manipal Hospital, Karimnagar",Karimnagar,High Risk (Surgical/Advanced),+91 932 555 4000,13
+DOC_009,Dr. Kavita Pillai,Hepatologist / Gastroenterologist,"Manipal Hospital, Madurai",Madurai,Low Risk (Preventive),+91 923 555 3179,24
+DOC_076,Dr. Sanjay Verma,Hepatologist / Gastroenterologist,"Appollo Health City, Nellore",Nellore,High Risk (Surgical/Advanced),+91 999 555 4559,18
+DOC_066,Dr. Priya Nair,Hepatologist / Gastroenterologist,"Narayana Health, Visakhapatnam",Visakhapatnam,Medium Risk (Management),+91 864 555 3441,9
+DOC_032,Dr. Swathi Menon,Hepatologist / Gastroenterologist,"Gleneagles Global Health City, Karimnagar",Karimnagar,Medium Risk (Management),+91 907 555 6425,16
+DOC_017,Dr. Arjun Verma,Hepatologist / Gastroenterologist,"Manipal Hospital, Salem",Salem,Low Risk (Preventive),+91 768 555 3835,8
+DOC_041,Dr. Vikram Shetty,Hepatologist / Gastroenterologist,"Manipal Hospital, Trivandrum",Trivandrum,Medium Risk (Management),+91 725 555 8952,11
+DOC_082,Dr. Lakshmi Krishna,Hepatologist / Gastroenterologist,"Manipal Hospital, Guntur",Guntur,High Risk (Surgical/Advanced),+91 957 555 1322,30
+DOC_036,Dr. Deepa Subramanian,Hepatologist / Gastroenterologist,"Amrita Hospital, Warangal",Warangal,Medium Risk (Management),+91 809 555 7442,15
+DOC_085,Dr. Sanjay Nair,Hepatologist / Gastroenterologist,"Aster Medcity, Kozhikode",Kozhikode,High Risk (Surgical/Advanced),+91 925 555 7436,25
+DOC_061,Dr. Priya Nair,Hepatologist / Gastroenterologist,"Narayana Health, Salem",Salem,Medium Risk (Management),+91 746 555 5674,20
+DOC_091,Dr. Naveen Subramanian,Hepatologist / Gastroenterologist,"KIMS Health, Mangalore",Mangalore,High Risk (Surgical/Advanced),+91 987 555 3286,17
+DOC_001,Dr. Karthik Rao,Hepatologist / Gastroenterologist,"Aster Medcity, Nellore",Nellore,Low Risk (Preventive),+91 813 555 1294,10
+DOC_053,Dr. Lakshmi Menon,Hepatologist / Gastroenterologist,"Narayana Health, Mysore",Mysore,Medium Risk (Management),+91 924 555 8971,13
+DOC_063,Dr. Rajesh Kumar,Hepatologist / Gastroenterologist,"Manipal Hospital, Salem",Salem,Medium Risk (Management),+91 960 555 4130,13
+DOC_029,Dr. Karthik Iyer,Hepatologist / Gastroenterologist,"Manipal Hospital, Trichy",Trichy,Low Risk (Preventive),+91 961 555 3693,17
+DOC_050,Dr. Manoj Nair,Hepatologist / Gastroenterologist,"KIMS Health, Trivandrum",Trivandrum,Medium Risk (Management),+91 983 555 1571,18
+DOC_003,Dr. Meera Kumar,Hepatologist / Gastroenterologist,"Amrita Hospital, Kozhikode",Kozhikode,Low Risk (Preventive),+91 938 555 1208,17
+DOC_030,Dr. Vikram Gowda,Hepatologist / Gastroenterologist,"Narayana Health, Bangalore",Bangalore,Low Risk (Preventive),+91 732 555 1501,11
+DOC_008,Dr. Deepa Kumar,Hepatologist / Gastroenterologist,"Aster Medcity, Kozhikode",Kozhikode,Low Risk (Preventive),+91 747 555 7533,11
+DOC_024,Dr. Priya Varma,Hepatologist / Gastroenterologist,"AIG Hospitals, Bangalore",Bangalore,Low Risk (Preventive),+91 811 555 8696,19
+DOC_018,Dr. Swathi Nair,Hepatologist / Gastroenterologist,"KIMS Health, Nellore",Nellore,Low Risk (Preventive),+91 904 555 3681,30
+DOC_037,Dr. Vikram Menon,Hepatologist / Gastroenterologist,"Fortis Hospital, Madurai",Madurai,Medium Risk (Management),+91 934 555 8828,11
+DOC_035,Dr. Kavita Reddy,Hepatologist / Gastroenterologist,"Narayana Health, Belgaum",Belgaum,Medium Risk (Management),+91 777 555 6740,7
+DOC_052,Dr. Arjun Pillai,Hepatologist / Gastroenterologist,"Narayana Health, Hubli",Hubli,Medium Risk (Management),+91 856 555 9276,23
+DOC_087,Dr. Swathi Subramanian,Hepatologist / Gastroenterologist,"Appollo Health City, Bangalore",Bangalore,High Risk (Surgical/Advanced),+91 898 555 7357,17
+DOC_097,Dr. Vikram Shetty,Hepatologist / Gastroenterologist,"MIOT International, Hubli",Hubli,High Risk (Surgical/Advanced),+91 889 555 9957,28
+DOC_078,Dr. Vikram Krishna,Hepatologist / Gastroenterologist,"Appollo Health City, Visakhapatnam",Visakhapatnam,High Risk (Surgical/Advanced),+91 834 555 2412,21
+DOC_010,Dr. Sanjay Kumar,Hepatologist / Gastroenterologist,"Gleneagles Global Health City, Trivandrum",Trivandrum,Low Risk (Preventive),+91 708 555 7749,30
+DOC_044,Dr. Sanjay Naidu,Hepatologist / Gastroenterologist,"Fortis Hospital, Mysore",Mysore,Medium Risk (Management),+91 847 555 1810,13
+DOC_081,Dr. Suresh Menon,Hepatologist / Gastroenterologist,"Aster Medcity, Coimbatore",Coimbatore,High Risk (Surgical/Advanced),+91 996 555 2472,21
+DOC_080,Dr. Deepa Varma,Hepatologist / Gastroenterologist,"AIG Hospitals, Hubli",Hubli,High Risk (Surgical/Advanced),+91 853 555 7415,11
+DOC_072,Dr. Kavita Menon,Hepatologist / Gastroenterologist,"Fortis Hospital, Visakhapatnam",Visakhapatnam,High Risk (Surgical/Advanced),+91 787 555 3307,26
+DOC_015,Dr. Karthik Kumar,Hepatologist / Gastroenterologist,"MIOT International, Guntur",Guntur,Low Risk (Preventive),+91 955 555 4184,26
+DOC_095,Dr. Naveen Rao,Hepatologist / Gastroenterologist,"Amrita Hospital, Nellore",Nellore,High Risk (Surgical/Advanced),+91 874 555 1500,25
+DOC_079,Dr. Naveen Varma,Hepatologist / Gastroenterologist,"Appollo Health City, Nellore",Nellore,High Risk (Surgical/Advanced),+91 811 555 6685,30
+DOC_086,Dr. Rajesh Pillai,Hepatologist / Gastroenterologist,"Gleneagles Global Health City, Mysore",Mysore,High Risk (Surgical/Advanced),+91 868 555 3655,19
+DOC_077,Dr. Priya Menon,Hepatologist / Gastroenterologist,"MIOT International, Vijayawada",Vijayawada,High Risk (Surgical/Advanced),+91 918 555 4443,14
+DOC_096,Dr. Ananya Subramanian,Hepatologist / Gastroenterologist,"KIMS Health, Vijayawada",Vijayawada,High Risk (Surgical/Advanced),+91 961 555 7645,12
+DOC_054,Dr. Priya Iyer,Hepatologist / Gastroenterologist,"Amrita Hospital, Bangalore",Bangalore,Medium Risk (Management),+91 921 555 8319,20
+DOC_065,Dr. Meera Iyer,Hepatologist / Gastroenterologist,"Fortis Hospital, Karimnagar",Karimnagar,Medium Risk (Management),+91 872 555 2961,18
+DOC_002,Dr. Meera Krishna,Hepatologist / Gastroenterologist,"MIOT International, Madurai",Madurai,Low Risk (Preventive),+91 786 555 7080,17
+DOC_056,Dr. Naveen Pillai,Hepatologist / Gastroenterologist,"Gleneagles Global Health City, Kochi",Kochi,Medium Risk (Management),+91 812 555 9965,28
+DOC_099,Dr. Lakshmi Pillai,Hepatologist / Gastroenterologist,"Aster Medcity, Guntur",Guntur,High Risk (Surgical/Advanced),+91 999 555 7263,26
+DOC_069,Dr. Vikram Nair,Hepatologist / Gastroenterologist,"Fortis Hospital, Salem",Salem,Medium Risk (Management),+91 915 555 9869,12
+DOC_040,Dr. Manoj Rao,Hepatologist / Gastroenterologist,"Narayana Health, Visakhapatnam",Visakhapatnam,Medium Risk (Management),+91 896 555 1237,5
+DOC_098,Dr. Karthik Rao,Hepatologist / Gastroenterologist,"Gleneagles Global Health City, Guntur",Guntur,High Risk (Surgical/Advanced),+91 846 555 4238,27
+DOC_042,Dr. Karthik Nair,Hepatologist / Gastroenterologist,"Appollo Health City, Nellore",Nellore,Medium Risk (Management),+91 821 555 4272,11
+DOC_021,Dr. Kavita Reddy,Hepatologist / Gastroenterologist,"MIOT International, Coimbatore",Coimbatore,Low Risk (Preventive),+91 835 555 4041,5
+DOC_004,Dr. Sanjay Shetty,Hepatologist / Gastroenterologist,"KIMS Health, Hubli",Hubli,Low Risk (Preventive),+91 826 555 9523,11
+DOC_047,Dr. Kavita Pillai,Hepatologist / Gastroenterologist,"Aster Medcity, Nellore",Nellore,Medium Risk (Management),+91 887 555 8924,24
+DOC_012,Dr. Meera Iyer,Hepatologist / Gastroenterologist,"Amrita Hospital, Mysore",Mysore,Low Risk (Preventive),+91 844 555 5369,14
+DOC_019,Dr. Manoj Menon,Hepatologist / Gastroenterologist,"Fortis Hospital, Bangalore",Bangalore,Low Risk (Preventive),+91 965 555 5649,14
+DOC_089,Dr. Kavita Krishna,Hepatologist / Gastroenterologist,"AIG Hospitals, Kozhikode",Kozhikode,High Risk (Surgical/Advanced),+91 846 555 6322,22
+DOC_039,Dr. Sanjay Menon,Hepatologist / Gastroenterologist,"AIG Hospitals, Belgaum",Belgaum,Medium Risk (Management),+91 918 555 7801,11
+DOC_034,Dr. Karthik Subramanian,Hepatologist / Gastroenterologist,"Appollo Health City, Trivandrum",Trivandrum,Medium Risk (Management),+91 743 555 4808,24
+DOC_023,Dr. Swathi Reddy,Hepatologist / Gastroenterologist,"AIG Hospitals, Mangalore",Mangalore,Low Risk (Preventive),+91 928 555 7279,5
+DOC_020,Dr. Manoj Krishna,Hepatologist / Gastroenterologist,"Manipal Hospital, Nellore",Nellore,Low Risk (Preventive),+91 855 555 9683,15
+DOC_067,Dr. Kavita Rao,Hepatologist / Gastroenterologist,"Gleneagles Global Health City, Karimnagar",Karimnagar,Medium Risk (Management),+91 773 555 1793,27
+DOC_006,Dr. Manoj Nair,Hepatologist / Gastroenterologist,"Fortis Hospital, Hyderabad",Hyderabad,Low Risk (Preventive),+91 873 555 8642,9
+DOC_075,Dr. Lakshmi Gowda,Hepatologist / Gastroenterologist,"Fortis Hospital, Trivandrum",Trivandrum,High Risk (Surgical/Advanced),+91 732 555 7951,25
+DOC_046,Dr. Meera Iyer,Hepatologist / Gastroenterologist,"Appollo Health City, Nizamabad",Nizamabad,Medium Risk (Management),+91 797 555 9281,8
+DOC_059,Dr. Naveen Reddy,Hepatologist / Gastroenterologist,"Manipal Hospital, Madurai",Madurai,Medium Risk (Management),+91 745 555 6490,22
+DOC_043,Dr. Lakshmi Gowda,Hepatologist / Gastroenterologist,"Appollo Health City, Madurai",Madurai,Medium Risk (Management),+91 977 555 2526,9
+DOC_060,Dr. Deepa Shetty,Hepatologist / Gastroenterologist,"AIG Hospitals, Bangalore",Bangalore,Medium Risk (Management),+91 743 555 2381,28
+DOC_064,Dr. Arjun Kumar,Hepatologist / Gastroenterologist,"Amrita Hospital, Hyderabad",Hyderabad,Medium Risk (Management),+91 782 555 7318,6
+DOC_038,Dr. Naveen Krishna,Hepatologist / Gastroenterologist,"Narayana Health, Trivandrum",Trivandrum,Medium Risk (Management),+91 970 555 9769,21
+DOC_028,Dr. Ananya Shetty,Hepatologist / Gastroenterologist,"AIG Hospitals, Hyderabad",Hyderabad,Low Risk (Preventive),+91 938 555 1198,20
+DOC_011,Dr. Arjun Reddy,Hepatologist / Gastroenterologist,"Fortis Hospital, Madurai",Madurai,Low Risk (Preventive),+91 941 555 3538,20

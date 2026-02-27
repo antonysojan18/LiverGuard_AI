@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiverAI v2.0 - NeuroGuard Theme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-main: #ffe4e8;
+            --bg-dark: #5c001e;
+            --card-bg: rgba(60, 15, 25, 0.95);
+            --border-glass: rgba(255, 182, 193, 0.3);
+            --accent: #d03b5b;
+            --text-white: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #4a0c1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background:
+                radial-gradient(circle at 15% 50%, rgba(208, 59, 91, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(255, 182, 193, 0.1) 0%, transparent 50%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(208, 59, 91, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(208, 59, 91, 0.07) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        /* Floating Data Particles */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .data-particle {
+            position: absolute;
+            color: rgba(208, 59, 91, 0.2);
+            font-size: 1.5rem;
+            animation: driftUp 15s infinite linear;
+            bottom: -50px;
+        }
+
+        @keyframes driftUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
+            animation: float 12s infinite alternate ease-in-out;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 350px;
+            height: 350px;
+            background: rgba(208, 59, 91, 0.4);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 450px;
+            height: 450px;
+            background: rgba(255, 182, 193, 0.25);
+            bottom: -150px;
+            right: -100px;
+            animation-duration: 18s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) scale(1);
+            }
+
+            100% {
+                transform: translateY(40px) scale(1.1);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2.5rem;
+            position: relative;
+            z-index: 100;
+            background: rgba(60, 15, 25, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+            border-radius: 100px;
+            max-width: 1100px;
+            margin: 2rem auto 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .top-nav:hover {
+            border-color: rgba(208, 59, 91, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(208, 59, 91, 0.1);
+        }
+
+        .nav-brand {
+            font-size: 1.6rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+
+        .nav-brand i {
+            color: var(--accent);
+            filter: drop-shadow(0 0 8px rgba(208, 59, 91, 0.4));
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(74, 0, 24, 0.08);
+            border: 1px solid rgba(74, 0, 24, 0.15);
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            color: var(--bg-dark);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            animation: fadeInDown 1s ease-out 0.2s forwards;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #4a0c1a;
+            letter-spacing: -1px;
+            opacity: 0;
+            animation: fadeInDown 1s ease-out 0.4s forwards;
+        }
+
+        .glow-text {
+            background: linear-gradient(110deg, #d03b5b, #ff758f, #f9a8b6, #ff758f, #d03b5b);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: none;
+            display: inline-block;
+            animation: textShine 4s linear infinite;
+        }
+
+        @keyframes textShine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #5c001e;
+            max-width: 750px;
+            margin: 0 auto 4rem;
+            line-height: 1.6;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInDown 1s ease-out 0.6s forwards;
+        }
+
+        .split-dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+        }
+
+        .decision-card {
+            background: rgba(40, 5, 15, 0.6);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
+            padding: 3.5rem 3rem;
+            text-align: left;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .decision-card:nth-child(1) {
+            animation-delay: 0.8s;
+        }
+
+        .decision-card:nth-child(2) {
+            animation-delay: 1.0s;
+        }
+
+        .decision-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+            opacity: 0.5;
+            transition: all 0.6s ease;
+        }
+
+        .decision-card>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .decision-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.2);
+        }
+
+        .decision-card:hover::before {
+            transform: scale(1.5);
+            opacity: 0.8;
+        }
+
+        .decision-icon {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            width: 75px;
+            height: 75px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 22px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .decision-icon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+        }
+
+        .decision-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            align-self: flex-start;
+        }
+
+        .decision-card h2 {
+            font-size: 2rem;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .decision-card p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .card-basic {
+            border-bottom: 4px solid #0df0a4;
+        }
+
+        .card-basic::before {
+            background: rgba(13, 240, 164, 0.4);
+        }
+
+        .card-basic .decision-icon {
+            color: #0df0a4;
+            background: rgba(13, 240, 164, 0.15);
+            border: 1px solid rgba(13, 240, 164, 0.3);
+        }
+
+        .card-basic .decision-badge {
+            color: #0df0a4;
+            background: rgba(13, 240, 164, 0.1);
+        }
+
+        .card-basic .btn {
+            background: rgba(13, 240, 164, 0.1);
+            color: #0df0a4;
+            border: 1px solid rgba(13, 240, 164, 0.3);
+        }
+
+        .card-basic:hover .btn {
+            background: #0df0a4;
+            color: #000;
+            border-color: #0df0a4;
+            box-shadow: 0 5px 20px rgba(13, 240, 164, 0.4);
+        }
+
+        .card-basic:hover .decision-icon {
+            transform: scale(1.1);
+        }
+
+        .card-advanced {
+            border-bottom: 4px solid #60a5fa;
+        }
+
+        .card-advanced::before {
+            background: rgba(59, 130, 246, 0.4);
+        }
+
+        .card-advanced .decision-icon {
+            color: #60a5fa;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .card-advanced .decision-badge {
+            color: #60a5fa;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .card-advanced .btn {
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .card-advanced:hover .btn {
+            background: #3b82f6;
+            color: #fff;
+            border-color: #3b82f6;
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .card-advanced:hover .decision-icon {
+            transform: scale(1.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .decision-card:hover .btn i {
+            transform: translateX(8px);
+        }
+
+        @media(max-width: 900px) {
+            .split-dashboard {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Elevated Animated Background -->
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="particles-container">
+        <!-- Generates animated floating tech/medical icons in the background -->
+        <i class="fas fa-plus data-particle" style="left: 10%; animation-duration: 18s; animation-delay: 0s;"></i>
+        <i class="fas fa-circle-notch data-particle"
+            style="left: 25%; animation-duration: 22s; animation-delay: 4s; font-size: 1rem;"></i>
+        <i class="fas fa-heartbeat data-particle"
+            style="left: 45%; animation-duration: 15s; animation-delay: 2s; font-size: 2rem;"></i>
+        <i class="fas fa-dna data-particle" style="left: 65%; animation-duration: 25s; animation-delay: 8s;"></i>
+        <i class="fas fa-plus data-particle"
+            style="left: 85%; animation-duration: 19s; animation-delay: 1s; font-size: 1.2rem;"></i>
+        <i class="fas fa-microscope data-particle"
+            style="left: 75%; animation-duration: 21s; animation-delay: 6s; opacity: 0.15;"></i>
+    </div>
+
+    <nav class="top-nav">
+        <div class="nav-brand"><i class="fas fa-heartbeat"></i> <span>LiverGuard AI</span></div>
+        <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <div
+                style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500; display: flex; align-items: center; gap: 0.5rem; background: rgba(0,0,0,0.3); padding: 0.6rem 1.2rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05);">
+                <i class="fas fa-shield-alt" style="color: #ff758f; font-size: 1.1rem;"></i> <span>Clinical
+                    Security</span>
+            </div>
+            <button onclick="window.location.reload(true);"
+                style="background: rgba(208, 59, 91, 0.15); border: 1px solid rgba(208, 59, 91, 0.5); color: #ffe4e8; padding: 0.7rem 1.5rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; letter-spacing: 0.5px;">
+                <i class="fas fa-sync-alt"></i> REFRESH ENGINE
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="hero-section">
+            <div class="hero-badge"><i class="fas fa-microscope" style="margin-right: 8px;"></i> Next-Gen Diagnostic
+                Intelligence</div>
+            <h1 class="hero-title">
+                The Future of <br><span class="glow-text">Liver Disease Prediction</span>
+            </h1>
+            <p class="hero-subtitle">
+                LiverGuard integrates state-of-the-art Random Forest logic and Gradient Boosting Algorithms to deliver
+                highly accurate <strong>Metabolic Analysis</strong> and early-onset detection with clinical precision.
+            </p>
+        </div>
+
+        <div class="split-dashboard">
+            <!-- Basic Selection -->
+            <a href="/basic" class="decision-card card-basic">
+                <div class="decision-badge"><i class="fas fa-leaf" style="margin-right: 5px;"></i> Lifestyle Pipeline
+                </div>
+                <div class="decision-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <h2>Basic Analysis</h2>
+                <p>Upload a patient's general lifestyle metrics. Our metabolic ML architecture isolates macro and micro
+                    deviations to detect high-frequency risk factors instantly.</p>
+                <div class="btn">Start Basic Analysis <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Advanced Selection -->
+            <a href="/advanced" class="decision-card card-advanced">
+                <div class="decision-badge"><i class="fas fa-dna" style="margin-right: 5px;"></i> Clinical Pipeline
+                </div>
+                <div class="decision-icon">
+                    <i class="fas fa-vial"></i>
+                </div>
+                <h2>Advanced Analysis</h2>
+                <p>Analyze clinical blood data (TBIL, DBIL, ALP, SGPT). Our robust multi-layered ensemble pipeline maps
+                    organ functions with maximum clinical accuracy.</p>
+                <div class="btn">Start Advanced Analysis <i class="fas fa-arrow-right"></i></div>
+            </a>
+        </div>
+    </main>
+
+    <!-- Interactive Mouse Glow -->
+    <div id="blob"></div>
+    <style>
+        #blob {
+            background-color: white;
+            height: 300px;
+            aspect-ratio: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            translate: -50% -50%;
+            border-radius: 50%;
+            background: linear-gradient(to right, rgba(255, 117, 143, 0.4), rgba(13, 240, 164, 0.4));
+            animation: rotate 20s infinite;
+            opacity: 0.6;
+            filter: blur(100px);
+            z-index: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        @keyframes rotate {
+            from {
+                rotate: 0deg;
+            }
+
+            50% {
+                scale: 1 1.5;
+            }
+
+            to {
+                rotate: 360deg;
+            }
+        }
+    </style>
+    <script>
+        const blob = document.getElementById("blob");
+        document.body.onpointermove = event => {
+            const { clientX, clientY } = event;
+            blob.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+            }, { duration: 3000, fill: "forwards", easing: "ease" });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiverAI Diagnostic Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-main: #A8E8F9;
+            --bg-dark: #00537A;
+            --card-bg: rgba(0, 34, 51, 0.95);
+            --border-glass: rgba(168, 232, 249, 0.3);
+            --accent: #54ACBF;
+            --accent-dim: rgba(84, 172, 191, 0.5);
+            --text-white: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.85);
+            --danger: #ff4d4d;
+            --danger-bg: rgba(60, 0, 0, 0.85);
+            --success: #0df0a4;
+            --success-bg: rgba(0, 50, 40, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #002B41;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-nodes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at top right, #ffffff 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
+            animation: float 12s infinite alternate ease-in-out;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 350px;
+            height: 350px;
+            background: rgba(84, 172, 191, 0.4);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 450px;
+            height: 450px;
+            background: rgba(193, 232, 255, 0.25);
+            bottom: -150px;
+            right: -100px;
+            animation-duration: 18s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) scale(1);
+            }
+
+            100% {
+                transform: translateY(40px) scale(1.1);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-header {
+            text-align: center;
+            padding: 2rem 0;
+            background: var(--bg-dark);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav-brand {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-brand i {
+            color: var(--accent);
+            filter: drop-shadow(0 0 8px rgba(84, 172, 191, 0.4));
+            font-size: 1.8rem;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            color: var(--text-white);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            border-top: 4px solid var(--accent);
+        }
+
+        .panel-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-liver {
+            background: linear-gradient(135deg, var(--accent), #A8E8F9);
+            color: #002B41;
+            box-shadow: 0 10px 25px rgba(84, 172, 191, 0.3);
+            width: 100%;
+            border-radius: 14px;
+            padding: 1.2rem;
+            font-size: 1.15rem;
+            margin-top: 1rem;
+        }
+
+        .btn-liver:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(84, 172, 191, 0.5);
+            background: linear-gradient(135deg, #A8E8F9, var(--accent));
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+        }
+
+        .feature-list li:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 0.5rem;
+        }
+
+        .result-banner {
+            background: var(--card-bg);
+            color: var(--text-white);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            border: 1px solid var(--border-glass);
+            margin-bottom: 3rem;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .danger-banner {
+            background: var(--danger-bg);
+            border-color: rgba(255, 77, 77, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 77, 77, 0.1);
+        }
+
+        .safe-banner {
+            background: var(--success-bg);
+            border-color: rgba(13, 240, 164, 0.3);
+            box-shadow: 0 10px 30px rgba(13, 240, 164, 0.1);
+        }
+
+        .banner-icon {
+            font-size: 4rem;
+            flex-shrink: 0;
+        }
+
+        .danger-banner .banner-icon i,
+        .danger-banner h2 {
+            color: var(--danger);
+            text-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+        }
+
+        .safe-banner .banner-icon i,
+        .safe-banner h2 {
+            color: var(--success);
+            text-shadow: 0 0 15px rgba(13, 240, 164, 0.4);
+        }
+
+        .banner-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .banner-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        @media(max-width: 900px) {
+            .panel-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-nodes"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <header class="main-header" style="position: relative; z-index: 10; padding: 1.5rem 0;">
+        <div class="container"
+            style="display: flex; justify-content: space-between; align-items: center; padding: 0 2rem;">
+            <div class="nav-brand"><i class="fas fa-heartbeat"></i> <span><span
+                        style="font-weight: 300;">LiverGuard</span> AI</span></div>
+            <div
+                style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500; display: flex; align-items: center; gap: 0.5rem; background: rgba(0,0,0,0.3); padding: 0.6rem 1.2rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05);">
+                <i class="fas fa-microscope" style="color: var(--accent); font-size: 1.1rem;"></i> <span>Analysis
+                    Complete</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="position: relative; z-index: 10;">
+        <div class="result-banner {% if risk_level == 'High' %}danger-banner{% else %}safe-banner{% endif %}">
+            <div class="banner-icon">
+                <i
+                    class="{% if risk_level == 'High' %}fas fa-exclamation-triangle{% else %}fas fa-check-circle{% endif %}"></i>
+            </div>
+            <div class="banner-text">
+                <h2>{{ risk_level }} Risk Profile</h2>
+                <p>{{ prediction_text }}</p>
+                <div
+                    style="margin-top: 0.8rem; display: inline-block; padding: 0.2rem 0.8rem; background: rgba(255,255,255,0.1); border-radius: 50px; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;">
+                    Model: {{ mode|title }} Pipeline
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-layout">
+            <div class="glass-card panel-left"
+                style="border-top-color: {% if risk_level == 'High' %}var(--danger){% else %}var(--success){% endif %};">
+                <h3 class="section-title"><i class="fas fa-chart-bar"></i> Diagnostic Explaination (SHAP)</h3>
+                <div
+                    style="width:100%; height:320px; background:rgba(0,0,0,0.2); border-radius:12px; padding:15px; border:1px solid var(--border-glass);">
+                    <canvas id="shapChart"></canvas>
+                </div>
+
+                <div style="margin-top:2rem;">
+                    <h3 class="section-title"><i class="fas fa-clipboard-check"></i> Key Drivers</h3>
+                    <ul class="feature-list">
+                        {% for reason in reasons %}
+                        <li><span><i class="fas fa-info-circle"
+                                    style="color: {% if risk_level == 'High' %}var(--danger){% else %}var(--success){% endif %};"></i></span>
+                            <strong>{{ reason }}</strong>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card panel-right">
+                <h3 class="section-title"><i class="fas fa-bullseye"></i> Fibrosis Probability</h3>
+                <div style="text-align:center; padding: 1.5rem 0; position: relative;">
+                    <h1 id="conf-counter" data-target="{{ conf }}"
+                        style="font-size: 5rem; color: {% if risk_level == 'High' %}var(--danger){% else %}var(--success){% endif %}; font-weight:700; line-height: 1; text-shadow: 0 0 25px {% if risk_level == 'High' %}rgba(255, 77, 77, 0.4){% else %}rgba(13, 240, 164, 0.4){% endif %};">
+                        0%</h1>
+                    <p class="desc" style="margin-top: 1rem;">Prediction Confidence Interval</p>
+                </div>
+
+                <h3 class="section-title"><i class="fas fa-list-ol"></i> Actionable Protocol</h3>
+                <div
+                    style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-glass);">
+                    <ul
+                        style="list-style: none; display: flex; flex-direction: column; gap: 1rem; color: var(--text-muted); font-size: 0.95rem;">
+                        {% for item in diet_plan %}
+                        <li style="display: flex; gap: 10px; align-items: flex-start;">
+                            <i class="fas fa-check" style="color: var(--accent); margin-top: 4px;"></i>
+                            {{ item }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
+                    <a href="/" class="btn btn-liver" style="text-decoration: none;">
+                        <i class="fas fa-undo-alt"></i> Return to HUD
+                    </a>
+                    <button onclick="window.print()" class="btn btn-liver"
+                        style="background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.2); box-shadow: none;">
+                        <i class="fas fa-print"></i> Generate Clinical PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var featureNames = {{ feature_names | tojson | safe }};
+        var featureValues = {{ feature_importance | tojson | safe }};
+
+        var posColor = 'rgba(255, 77, 77, 0.8)'; // Danger red
+        var negColor = 'rgba(13, 240, 164, 0.8)'; // Success green
+
+        var backgroundColors = featureValues.map(v => v >= 0 ? posColor : negColor);
+
+        Chart.defaults.color = "rgba(255, 255, 255, 0.7)";
+        Chart.defaults.borderColor = "rgba(255, 255, 255, 0.1)";
+
+        var ctx = document.getElementById('shapChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: featureNames,
+                datasets: [{
+                    label: 'SHAP Value (Impact on Prediction)',
+                    data: featureValues,
+                    backgroundColor: backgroundColors,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: { color: "rgba(255,255,255,0.05)" },
+                        title: { display: true, text: 'SHAP Value (Risk Impact)', color: '#fff' }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { color: 'rgba(255, 255, 255, 0.85)' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Number Counter Animation for Confidence interval
+        document.addEventListener('DOMContentLoaded', () => {
+            const counter = document.getElementById('conf-counter');
+            if (counter) {
+                const targetText = counter.getAttribute('data-target');
+                const targetMatch = targetText.match(/(\d+\.?\d*)/);
+                if (targetMatch) {
+                    const targetNum = parseFloat(targetMatch[1]);
+                    const duration = 2000;
+                    const steps = 60;
+                    const stepTime = Math.abs(Math.floor(duration / steps));
+                    let currentNum = 0;
+
+                    const timer = setInterval(() => {
+                        currentNum += targetNum / steps;
+                        if (currentNum >= targetNum) {
+                            counter.innerText = targetText;
+                            clearInterval(timer);
+                        } else {
+                            counter.innerText = currentNum.toFixed(2) + '%';
+                        }
+                    }, stepTime);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

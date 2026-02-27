@@ -1,0 +1,4 @@
+Transaction_ID,Timestamp,patient_name,phone,doc_name,hospital,date,time,method,payment_amount,upi_app
+D44B63CE,2026-02-26 23:36:56,Anto,,Dr. Meera Varma,"KIMS Health, Nellore",2026-02-26,12:00 PM,UPI,500,PhonePe
+51415527,2026-02-27 00:00:22,Anto,,Dr. Swathi Varma,"Amrita Hospital, Chennai",2026-02-27,12:00 PM,QR Scan,500,
+BD418DC0,2026-02-27 00:11:56,ttt,,Dr. Priya Reddy,"Appollo Health City, Kozhikode",2026-02-27,12:00 PM,UPI,500,Paytm

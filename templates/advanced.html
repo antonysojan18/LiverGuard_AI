@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Analysis - LiverGuard AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-main: #ffe4e8;
+            --bg-dark: #5c001e;
+            --card-bg: rgba(60, 15, 25, 0.95);
+            --border-glass: rgba(255, 182, 193, 0.3);
+            --accent: #d03b5b;
+            --accent-dim: rgba(208, 59, 91, 0.5);
+            --text-white: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: #4a0c1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-nodes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at top right, #ffffff 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
+            animation: float 12s infinite alternate ease-in-out;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 350px;
+            height: 350px;
+            background: rgba(208, 59, 91, 0.4);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 450px;
+            height: 450px;
+            background: rgba(255, 182, 193, 0.25);
+            bottom: -150px;
+            right: -100px;
+            animation-duration: 18s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) scale(1);
+            }
+
+            100% {
+                transform: translateY(40px) scale(1.1);
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2.5rem;
+            position: relative;
+            z-index: 100;
+            background: rgba(60, 15, 25, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+            border-radius: 100px;
+            max-width: 1100px;
+            margin: 2rem auto 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .top-nav:hover {
+            border-color: rgba(208, 59, 91, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(208, 59, 91, 0.1);
+        }
+
+        .nav-brand {
+            font-size: 1.6rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+
+        .nav-brand i {
+            color: var(--accent);
+            filter: drop-shadow(0 0 8px rgba(208, 59, 91, 0.4));
+        }
+
+        .btn-sec {
+            background: rgba(208, 59, 91, 0.15);
+            border: 1px solid rgba(208, 59, 91, 0.5);
+            color: #ffe4e8;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-sec:hover {
+            background: rgba(208, 59, 91, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(208, 59, 91, 0.3);
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            color: var(--text-white);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            border-top: 4px solid var(--accent);
+            margin-top: 2rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-card {
+            background: rgba(30, 0, 10, 0.4);
+            border: 1px solid rgba(255, 182, 193, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px dashed rgba(208, 59, 91, 0.3);
+            padding-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: var(--text-white);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-group label .icon-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-group label i {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .input-group input[type="text"],
+        .input-group input[type="number"] {
+            width: 100%;
+            background: rgba(255, 182, 193, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            color: #fff;
+            outline: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            font-family: monospace;
+        }
+
+        .input-group input[type="text"]:focus,
+        .input-group input[type="number"]:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(208, 59, 91, 0.2);
+            background: rgba(255, 182, 193, 0.25);
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Radio Box Selections */
+        .radio-selection {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .radio-selection input[type="radio"] {
+            display: none;
+        }
+
+        .radio-box {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 1rem;
+            background: rgba(255, 182, 193, 0.1);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Gender Specific Colors */
+        .radio-selection input[type="radio"]:checked+.radio-box.male {
+            background: rgba(59, 130, 246, 0.3);
+            border-color: #60a5fa;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .radio-selection input[type="radio"]:checked+.radio-box.female {
+            background: rgba(244, 114, 182, 0.3);
+            border-color: #f472b6;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(244, 114, 182, 0.4);
+        }
+
+        .btn-liver {
+            background: linear-gradient(135deg, var(--accent), #ffb3c6);
+            color: #4a0c1a;
+            box-shadow: 0 10px 25px rgba(208, 59, 91, 0.3);
+            width: 100%;
+            border-radius: 14px;
+            padding: 1.2rem;
+            font-size: 1.15rem;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .btn-liver:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(208, 59, 91, 0.5);
+            background: linear-gradient(135deg, #ffb3c6, var(--accent));
+        }
+
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(60, 15, 25, 0.95);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(208, 59, 91, 0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s infinite linear;
+            margin-bottom: 2rem;
+        }
+
+        .loader-text {
+            color: #fff;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            .input-grid,
+            .radio-selection {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-nodes"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <nav class="top-nav">
+        <div class="nav-brand"><i class="fas fa-heartbeat"></i> <span>LiverGuard AI</span></div>
+        <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <div
+                style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500; display: flex; align-items: center; gap: 0.5rem; background: rgba(0,0,0,0.3); padding: 0.6rem 1.2rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05);">
+                <i class="fas fa-shield-alt" style="color: #ff758f; font-size: 1.1rem;"></i> <span>Clinical
+                    Security</span>
+            </div>
+            <a href="/" class="btn-sec"><i class="fas fa-arrow-left"></i> Return to HUB</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <form action="/predict" method="post" id="mainForm"
+            onsubmit="document.getElementById('analysisLoader').style.display='flex'">
+            <input type="hidden" name="mode" value="clinical">
+
+            <div class="glass-card">
+                <h2><span style="font-weight: 300;">Advanced</span> Analysis</h2>
+                <p class="desc">Input pathology markers directly from clinical biochemistry reports.</p>
+
+                <!-- 1. Personal Details Section -->
+                <div class="section-card">
+                    <h3 class="section-title"><i class="fas fa-user-circle"></i> Personal Details</h3>
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label><span class="icon-text"><i class="fas fa-user"></i> Full Name</span></label>
+                            <input type="text" name="patient_name" placeholder="e.g. John Doe">
+                        </div>
+                        <div class="input-group">
+                            <label><span class="icon-text"><i class="fas fa-calendar-alt"></i> Age</span></label>
+                            <input type="number" name="age_c" placeholder="Years" required min="1" max="120">
+                        </div>
+                        <div class="input-group" style="grid-column: span 2;">
+                            <label><span class="icon-text"><i class="fas fa-venus-mars"></i> Gender</span></label>
+                            <div class="radio-selection">
+                                <input type="radio" id="gender_male" name="gender_c" value="1" required>
+                                <label for="gender_male" class="radio-box male"><i class="fas fa-mars"></i> Male</label>
+
+                                <input type="radio" id="gender_female" name="gender_c" value="0" required>
+                                <label for="gender_female" class="radio-box female"><i class="fas fa-venus"></i>
+                                    Female</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Clinical Biomarkers Section -->
+                <div class="section-card">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed rgba(208, 59, 91, 0.3); padding-bottom: 0.8rem; margin-bottom: 1.5rem;">
+                        <h3 class="section-title" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;"><i
+                                class="fas fa-microscope"></i> Clinical Biomarkers</h3>
+                        <button type="button" class="btn-sec" onclick="loadDatabaseData()"
+                            style="padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem;">
+                            <i class="fas fa-database"></i> Auto-Fill Random Data
+                        </button>
+                    </div>
+
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label><span class="icon-text"><i class="fas fa-flask"></i> Total Bilirubin
+                                    (TBIL)</span></label>
+                            <input type="number" step="0.01" name="tb" id="inp_tb" placeholder="e.g. 0.8" required>
+                        </div>
+                        <div class="input-group">
+                            <label><span class="icon-text"><i class="fas fa-flask"></i> Direct Bilirubin
+                                    (DBIL)</span></label>
+                            <input type="number" step="0.01" name="db" id="inp_db" placeholder="e.g. 0.2" required>
+                        </div>
+                        <div class="input-group">
+                            <label><span class="icon-text"><i class="fas fa-vial"></i> Alk Phosphatase
+                                    (ALP)</span></label>
+                            <input type="number" step="any" name="alp" id="inp_alp" placeholder="e.g. 180" required>
+                        </div>
+                        <div class="input-group">
+                            <label><span class="icon-text"><i class="fas fa-vial"></i> ALT (SGPT)</span></label>
+                            <input type="number" step="any" name="alt" id="inp_alt" placeholder="e.g. 35" required>
+                        </div>
+                        <div class="input-group">
+                            <label><span class="icon-text"><i class="fas fa-vial"></i> AST (SGOT)</span></label>
+                            <input type="number" step="any" name="ast" id="inp_ast" placeholder="e.g. 40" required>
+                        </div>
+                        <div class="input-group">
+                            <label><span class="icon-text"><i class="fas fa-chart-bar"></i> Total
+                                    Proteins</span></label>
+                            <input type="number" step="0.1" name="tp" id="inp_tp" placeholder="e.g. 6.8" required>
+                        </div>
+                        <div class="input-group">
+                            <label><span class="icon-text"><i class="fas fa-chart-bar"></i> Albumin</span></label>
+                            <input type="number" step="0.1" name="alb" id="inp_alb" placeholder="e.g. 3.4" required>
+                        </div>
+                        <div class="input-group">
+                            <label><span class="icon-text"><i class="fas fa-percentage"></i> A/G Ratio</span></label>
+                            <input type="number" step="0.1" name="ag" id="inp_ag" placeholder="e.g. 1.0" required>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-liver mt-4">
+                    <i class="fas fa-play-circle" style="margin-right: 8px;"></i> RUN Advanced Analysis
+                </button>
+            </div>
+        </form>
+
+        <div id="analysisLoader" class="loader-overlay" style="display: none;">
+            <div class="text-center" style="display: flex; flex-direction: column; align-items: center;">
+                <div class="spinner"></div>
+                <h2 class="loader-text" style="color: #fff;">PROCESSING Analysis...</h2>
+                <p style="color: var(--accent); margin-top: 0.5rem; letter-spacing: 2px; text-transform: uppercase;">
+                    Correlating patient vectors</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function loadDatabaseData() {
+            // Generate a random multiplier to simulate different clinical patient profiles
+            const randomFactor = Math.random();
+            let isHighRisk = randomFactor > 0.5;
+
+            // Generate values based on risk profile
+            let base_tb = isHighRisk ? (1.5 + Math.random() * 3.0) : (0.2 + Math.random() * 1.0);
+            let base_db = isHighRisk ? (0.5 + Math.random() * 2.0) : (0.1 + Math.random() * 0.3);
+            let base_alp = isHighRisk ? (120 + Math.random() * 200) : (40 + Math.random() * 80);
+            let base_alt = isHighRisk ? (45 + Math.random() * 100) : (10 + Math.random() * 30);
+            let base_ast = isHighRisk ? (40 + Math.random() * 120) : (10 + Math.random() * 30);
+            let base_tp = 6.0 + Math.random() * 2.3; // Total protein varies less violently 
+            let base_alb = isHighRisk ? (2.0 + Math.random() * 1.5) : (3.5 + Math.random() * 1.5);
+            let base_ag = isHighRisk ? (0.5 + Math.random() * 0.7) : (1.2 + Math.random() * 0.8);
+
+            document.getElementById('inp_tb').value = base_tb.toFixed(2);
+            document.getElementById('inp_db').value = base_db.toFixed(2);
+            document.getElementById('inp_alp').value = Math.floor(base_alp);
+            document.getElementById('inp_alt').value = Math.floor(base_alt);
+            document.getElementById('inp_ast').value = Math.floor(base_ast);
+            document.getElementById('inp_tp').value = base_tp.toFixed(1);
+            document.getElementById('inp_alb').value = base_alb.toFixed(1);
+            document.getElementById('inp_ag').value = base_ag.toFixed(1);
+        }
+    </script>
+</body>
+
+</html>
