@@ -396,75 +396,85 @@
         }
 
         .card-basic {
-            border-bottom: 4px solid #0df0a4;
+            border-bottom: 4px solid #ff9f43;
+            background: linear-gradient(145deg, rgba(60, 15, 25, 0.8) 0%, rgba(40, 5, 15, 0.95) 100%);
         }
 
         .card-basic::before {
-            background: rgba(13, 240, 164, 0.4);
+            background: rgba(255, 159, 67, 0.3);
+            width: 250px;
+            height: 250px;
         }
 
         .card-basic .decision-icon {
-            color: #0df0a4;
-            background: rgba(13, 240, 164, 0.15);
-            border: 1px solid rgba(13, 240, 164, 0.3);
+            color: #ff9f43;
+            background: rgba(255, 159, 67, 0.15);
+            border: 1px solid rgba(255, 159, 67, 0.3);
+            box-shadow: 0 0 15px rgba(255, 159, 67, 0.2);
         }
 
         .card-basic .decision-badge {
-            color: #0df0a4;
-            background: rgba(13, 240, 164, 0.1);
+            color: #ff9f43;
+            background: rgba(255, 159, 67, 0.1);
+            border: 1px solid rgba(255, 159, 67, 0.3);
         }
 
         .card-basic .btn {
-            background: rgba(13, 240, 164, 0.1);
-            color: #0df0a4;
-            border: 1px solid rgba(13, 240, 164, 0.3);
+            background: rgba(255, 159, 67, 0.1);
+            color: #ff9f43;
+            border: 1px solid rgba(255, 159, 67, 0.3);
         }
 
         .card-basic:hover .btn {
-            background: #0df0a4;
-            color: #000;
-            border-color: #0df0a4;
-            box-shadow: 0 5px 20px rgba(13, 240, 164, 0.4);
+            background: linear-gradient(135deg, #ff9f43, #feca57);
+            color: #2c000e;
+            border-color: #ff9f43;
+            box-shadow: 0 5px 20px rgba(255, 159, 67, 0.4);
         }
 
         .card-basic:hover .decision-icon {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .card-advanced {
-            border-bottom: 4px solid #60a5fa;
+            border-bottom: 4px solid #48dbfb;
+            background: linear-gradient(145deg, rgba(60, 15, 25, 0.8) 0%, rgba(40, 5, 15, 0.95) 100%);
         }
 
         .card-advanced::before {
-            background: rgba(59, 130, 246, 0.4);
+            background: rgba(72, 219, 251, 0.3);
+            width: 250px;
+            height: 250px;
         }
 
         .card-advanced .decision-icon {
-            color: #60a5fa;
-            background: rgba(59, 130, 246, 0.15);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #48dbfb;
+            background: rgba(72, 219, 251, 0.15);
+            border: 1px solid rgba(72, 219, 251, 0.3);
+            box-shadow: 0 0 15px rgba(72, 219, 251, 0.2);
         }
 
         .card-advanced .decision-badge {
-            color: #60a5fa;
-            background: rgba(59, 130, 246, 0.1);
+            color: #48dbfb;
+            background: rgba(72, 219, 251, 0.1);
+            border: 1px solid rgba(72, 219, 251, 0.3);
         }
 
         .card-advanced .btn {
-            background: rgba(59, 130, 246, 0.1);
-            color: #60a5fa;
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            background: rgba(72, 219, 251, 0.1);
+            color: #48dbfb;
+            border: 1px solid rgba(72, 219, 251, 0.3);
         }
 
         .card-advanced:hover .btn {
-            background: #3b82f6;
-            color: #fff;
-            border-color: #3b82f6;
-            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, #48dbfb, #0abde3);
+            color: #2c000e;
+            border-color: #48dbfb;
+            box-shadow: 0 5px 20px rgba(72, 219, 251, 0.4);
         }
 
         .card-advanced:hover .decision-icon {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(-5deg);
         }
 
         .btn {
@@ -594,7 +604,7 @@
             top: 50%;
             translate: -50% -50%;
             border-radius: 50%;
-            background: linear-gradient(to right, rgba(255, 117, 143, 0.4), rgba(13, 240, 164, 0.4));
+            background: linear-gradient(to right, rgba(255, 159, 67, 0.4), rgba(72, 219, 251, 0.4));
             animation: rotate 20s infinite;
             opacity: 0.6;
             filter: blur(100px);
